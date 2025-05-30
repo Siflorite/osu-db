@@ -323,7 +323,8 @@ fn parse_replay_data(raw: Option<&[u8]>) -> Result<Option<Vec<Action>>, Error> {
     #[cfg(feature = "compression")]
     {
         if let Some(raw) = raw {
-            use xz2::{stream::Stream, write::XzDecoder};
+            // use xz2::{stream::Stream, write::XzDecoder};
+            use liblzma::{stream::Stream, write::XzDecoder};
 
             let mut decoder =
                 XzDecoder::new_stream(Vec::new(), Stream::new_lzma_decoder(u64::MAX)?);
@@ -348,7 +349,7 @@ fn write_replay_data<W: Write>(
     #[cfg(feature = "compression")]
     {
         if let Some(actions) = actions {
-            use xz2::{
+            use liblzma::{
                 stream::{LzmaOptions, Stream},
                 write::XzEncoder,
             };

@@ -101,7 +101,7 @@ mod prelude {
         path::Path,
     };
     #[cfg(feature = "compression")]
-    pub use xz2::stream::Error as LzmaError;
+    pub use liblzma::stream::Error as LzmaError;
 }
 
 pub mod collection;
