@@ -1,6 +1,6 @@
 [package]
 name = "osu-db"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["negamartin"]
 edition = "2018"
 
@@ -13,21 +13,14 @@ keywords = ["osu"]
 categories = ["encoding", "parser-implementations"]
 include = ["Cargo.toml", "src", "LICENSE"]
 
-[workspace]
-members = ["conv"]
-
 [dependencies]
 nom = "7"
 chrono = "0.4"
-
+liblzma = { version = "0.4", optional = true }
 serde = { version = "1", optional = true }
 serde_derive = { version = "1", optional = true }
 
-xz2 = { version = "*", optional = true }
-
 [features]
 default = ["compression"]
-# Provides serde integration.
 ser-de = ["serde", "serde_derive", "chrono/serde"]
-# Provides replay data decompression and further parsing.
-compression = ["xz2"]
+compression = ["liblzma"]
