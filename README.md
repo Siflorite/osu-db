@@ -1,5 +1,8 @@
 # osu-db
 
+Fixes the confilict between xz2 used in original osu-db and zip package. Now osu-db
+uses `liblzma` for replay data de/encode.
+
 `osu-db` is an osu! binary file format encoder/decoder, providing support for
 loading, modifying and saving the following osu! file formats:
 
@@ -11,7 +14,7 @@ loading, modifying and saving the following osu! file formats:
 To use, simply add this line to your `Cargo.toml`:
 
 ```toml
-osu-db = "0.2"
+osu-db = { git = "https://github.com/Siflorite/osu-db.git" }
 ```
 
 After that you will want to use the different load/save functions on the
